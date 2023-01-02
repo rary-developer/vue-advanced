@@ -1,26 +1,26 @@
 <template>
-  <div id="App">
-    hello
+  <div id="app">
+    <!-- url이 만약 news -->
+    <!-- <NewsView></NewsView> -->
+    
+    <!-- 1.Strongly Recommended -->
+    <!-- <ToolBar></ToolBar> -->
+    <!-- 2.Essential -->
+    <tool-bar></tool-bar>
+    <router-view></router-view>
   </div>
 </template>
 
-<script>  
+<script>
+import ToolBar from './components/ToolBar.vue';
+
 export default {
-  methods: {
-    fetchData(){
-      console.log("hello");
-    }
-  }
+  components: {
+    ToolBar,
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>

@@ -1,4 +1,4 @@
-module.exports = {
-  //eslint off
-  lintOnSave: false
-}
+const { defineConfig } = require('@vue/cli-service')
+module.exports = defineConfig({
+  lintOnSave:false
+})
