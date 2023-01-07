@@ -1,7 +1,6 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
-import {fetchNewsList} from '../api/index';
-import {fetchJobsList} from '../api/index';
+import {fetchNewsList ,fetchAskList,fetchJobsList} from '../api/index';
 
 Vue.use(Vuex);
 
@@ -10,6 +9,7 @@ export const store = new Vuex.Store({
   state: {
     news:[],
     jobs:[],
+    ask:[],
   },
   // getters,
   
@@ -20,6 +20,9 @@ export const store = new Vuex.Store({
     },
     SET_JOBS(state, jobs){
       state.jobs = jobs;
+    },
+    SET_ASK(state, ask){
+      state.ask = ask;
     }
   },
   //행동 => api 호출
@@ -27,7 +30,7 @@ export const store = new Vuex.Store({
     FETCH_NEWS(context){
       fetchNewsList()
       .then(response=>{
-        console.log(response.data);
+        //console.log(response.data);
         context.commit('SET_NEWS', response.data);
       })
       .catch(error => {
@@ -36,11 +39,20 @@ export const store = new Vuex.Store({
     },
     FETCH_JOBS(context){
       fetchJobsList()
-        .then(response => {
-          context.commit('SET_JOBS', response.data);
+        .then(({data}) => {
+          context.commit('SET_JOBS', data);
         })
         .catch(error => {
           console.error(error)
+        })
+    },
+    FETCH_ASK(context){
+      fetchAskList()
+        .then(({data})=>{
+          context.commit('SET_ASK', data);
+        })
+        .catch(error => {
+          console.error(error);
         })
     }
   }
