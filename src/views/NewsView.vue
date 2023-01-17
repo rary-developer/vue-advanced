@@ -1,6 +1,15 @@
 <template>
   <div>
-    <div v-for="user in this.$store.state.news" :key="user.id">{{ user.title }}</div>
+    <!-- <div v-for="user in this.$store.state.news" :key="user.id">
+      {{ user.title }}
+    </div> -->
+    <p v-for="item in this.$store.state.news" :key="item.id">
+        <a v-bind:href="item.url">
+          {{item.title}}
+        </a>        
+        <small>{{ item.time_ago}} by {{ item.user }}</small>
+
+    </p>
   </div>
 </template>
 
@@ -8,12 +17,7 @@
 //import axios from 'axios';
 //import {fetchNewsList} from '../api/index';
 
-export default {
-  // data(){
-  //   return{
-  //     users:[]
-  //   }
-  // },
+export default {  
   created(){
     // var vm = this;
     // console.log('호출 전: ', this);    
